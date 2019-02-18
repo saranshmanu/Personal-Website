@@ -5,6 +5,10 @@ app = Flask(__name__)
 def render():
     return render_template('index.html')
 
+@app.route('/achievements')
+def renderAchievements():
+    return render_template('achievements.html')
+
 host = "localhost"
 port = "80"
 
