@@ -5,12 +5,8 @@ app = Flask(__name__)
 def render():
     return render_template('index.html')
 
-@app.route('/beta')
-def render():
-    return render_template('beta.html')
-
 host = "localhost"
-port = "9000"
+port = "80"
 
 if __name__ == '__main__':
    app.run(host, port)
