@@ -9,7 +9,7 @@ def render():
 def renderAchievements():
     return render_template('achievements.html')
 
-host = "localhost"
+host = "0.0.0.0"
 port = "80"
 
 if __name__ == '__main__':
