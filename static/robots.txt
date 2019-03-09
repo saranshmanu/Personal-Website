@@ -1,0 +1,6 @@
+Sitemap: http://www.saransh.xyz/sitemap.xml
+User-Agent: *
+Disallow:
+Allow: /achievements
+Allow: /
+

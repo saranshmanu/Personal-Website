@@ -9,6 +9,14 @@ def render():
 def renderAchievements():
     return render_template('achievements.html')
 
+@app.route('/robots.txt')
+def siteMap():
+    return app.send_static_file('robots.txt')
+
+@app.route('/sitemap.xml')
+def robotsTxt():
+    return app.send_static_file('sitemap.xml')
+
 host = "0.0.0.0"
 port = "80"
 
