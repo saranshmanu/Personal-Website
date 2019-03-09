@@ -17,6 +17,10 @@ def siteMap():
 def robotsTxt():
     return app.send_static_file('sitemap.xml')
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('error.html'), 404
+
 host = "0.0.0.0"
 port = "80"
 
