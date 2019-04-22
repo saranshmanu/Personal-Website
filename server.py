@@ -5,6 +5,10 @@ app = Flask(__name__)
 def render():
     return render_template('index.html')
 
+@app.route('/blog/microsoft_imagine_cup')
+def microsoft_imagine_cup():
+    return render_template('microsoft_imagine_cup.html')
+
 @app.route('/achievements')
 def renderAchievements():
     return render_template('achievements.html')
@@ -26,3 +30,4 @@ port = "80"
 
 if __name__ == '__main__':
    app.run(host, port)
+
