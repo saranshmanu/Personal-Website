@@ -3,16 +3,6 @@ from flask_compress import Compress
 from io import StringIO as IO, BytesIO
 import gzip
 import functools
-from smsframework import Gateway
-from smsframework_amazon_sns import AmazonSNSProvider
-from smsframework import OutgoingMessage
-
-gateway = Gateway()
-gateway.add_provider('amazon', AmazonSNSProvider,
-    access_key='AKIAVZCARCJIIDLO5PGL',
-    secret_access_key='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',
-    region_name='ap-south-1',
-)
 
 def gzipped(f):
     @functools.wraps(f)
@@ -45,10 +35,6 @@ Compress(app)
 @app.route('/')
 @gzipped
 def render():
-#     try:
-#         gateway.send(OutgoingMessage('+919910749550', 'Somebody visited the website from ' + request.remote_addr).options(senderId='kolypto', escalate=True))
-#     except:
-#         print("An Error Occured")
     return render_template('index.html')
 
 @app.route('/journey')
@@ -71,14 +57,6 @@ def siteMap():
 def robotsTxt():
     return app.send_static_file('sitemap.xml')
 
-@app.route('/message')
-@gzipped
-def send_message():
-    args1 = request.args['number']
-    args2 = request.args['message']
-    message = gateway.send(OutgoingMessage('+91' + args1, args2).options(senderId='kolypto', escalate=True))
-    return str(message)
-
 @app.errorhandler(404)
 @gzipped
 def page_not_found(e):
@@ -88,5 +66,5 @@ host = "0.0.0.0"
 port = "80"
 
 if __name__ == '__main__':
-   app.run(host, port)
+   app.run(host, port, debug=True)
 
